@@ -1,15 +1,30 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class', // Active le mode sombre basé sur une classe
-  content: ['./src/**/*.{js,jsx,ts,tsx}'], // Scanne les fichiers source
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+    extend: {
+      animation: {
+        blob: "blob 7s infinite",
+      },
+      keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+      },
     },
   },
   plugins: [],
-};
+}

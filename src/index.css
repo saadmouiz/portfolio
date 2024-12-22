@@ -2,16 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  min-height: 100vh;
+  background: #18181B; /* zinc-900 */
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.glow {
+  text-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
+}
+
+/* Animation for floating elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Blob animation */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.gradient-border {
+  background: linear-gradient(#18181B, #18181B) padding-box,
+              linear-gradient(to right, #84cc16, #22c55e) border-box;
+  border: 2px solid transparent;
 }

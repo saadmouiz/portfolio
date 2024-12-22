@@ -18,7 +18,7 @@ const About = () => {
   ];
 
   return (
-    <section className="min-h-screen py-24 relative bg-gradient-to-b from-zinc-950 to-zinc-900">
+    <section id='about' className="min-h-screen w-full bg-gradient-to-b from-zinc-950 to-zinc-900 py-20">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 -left-4 w-72 h-72 bg-lime-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>

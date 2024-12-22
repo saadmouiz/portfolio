@@ -18,7 +18,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="min-h-screen relative overflow-hidden pt-32">
+    <section id='home' className="min-h-screen w-full bg-zinc-900 relative overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="relative z-10">
