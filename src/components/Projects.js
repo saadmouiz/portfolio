@@ -4,6 +4,7 @@ import img2 from "../images/image2.png";
 import img3 from "../images/image1.png";
 import img4 from '../images/image4.png';
 import img5 from '../images/image5.png';
+import img6 from '../images/img6.png';
 
 const ProjectCard = ({ project }) => (
   <div className="relative group">
@@ -91,6 +92,16 @@ const ProjectCard = ({ project }) => (
 const ProjectsShowcase = () => {
   const projects = [
     {
+      type: "Web Application",
+      title: "inscription aiais",
+      description: "A Laravel-based web platform for managing candidate applications with file uploads, admin review, and automated archiving of accepted submissions.",
+      technologies: ["Laravel", "Tailwind"],
+      image: img6,
+      demoLink: "https://inscription.aiais.org/",
+      
+    }
+    ,
+    {
       type: "Featured Project",
       title: "E-commerce (Mizo Shop)",
       description: "An advanced e-commerce platform with modern UI and responsive design.",
@@ -137,7 +148,7 @@ const ProjectsShowcase = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-zinc-950 py-20 px-8">
+    <section id="projects" className="min-h-screen w-full bg-zinc-950 py-20">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-5xl font-bold text-center text-lime-400 mb-12">Featured Projects</h2>
         <div className="space-y-32">
