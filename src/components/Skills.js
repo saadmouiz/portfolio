@@ -14,7 +14,7 @@ const Skills = () => {
       { name: "JavaScript", icon: js },
       { name: "PHP", icon: php },
       { name: "Laravel", icon: laravel },
-      { name : "React" , icon: react}
+      { name : "React js" , icon: react}
     ];
   
     return (
