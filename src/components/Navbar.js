@@ -1,5 +1,6 @@
 import { Link } from 'react-scroll';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,41 +17,50 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-zinc-900/80 backdrop-blur-lg">
+    <motion.nav
+      className="fixed w-full top-0 z-50 bg-zinc-900/80 backdrop-blur-lg border-b border-zinc-800/60"
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link 
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={0}
-            duration={800}
-            className="text-2xl font-bold text-lime-400 glow cursor-pointer"
-          >
-            &lt;SAAD/&gt;
-          </Link>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link 
+              to="home"
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={800}
+              className="text-2xl font-bold text-blue-400 glow cursor-pointer"
+            >
+              &lt;SAAD/&gt;
+            </Link>
+          </motion.div>
           
           {/* Menu Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link 
-                key={item.name}
-                to={item.name.toLowerCase()}
-                spy={true}
-                smooth={true}
-                offset={item.offset}
-                duration={800}
-                activeClass="text-lime-400"
-                className="text-zinc-400 hover:text-lime-400 transition-all duration-300 cursor-pointer"
-              >
-                {item.name}
-              </Link>
+              <motion.div key={item.name} whileHover={{ y: -2 }}>
+                <Link 
+                  to={item.name.toLowerCase()}
+                  spy={true}
+                  smooth={true}
+                  offset={item.offset}
+                  duration={800}
+                  activeClass="text-blue-400"
+                  className="relative text-sm tracking-wide text-zinc-400 hover:text-blue-400 transition-all duration-300 cursor-pointer"
+                >
+                  {item.name}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* Bouton Menu Mobile */}
           <button 
-            className="md:hidden text-lime-400 focus:outline-none"
+            className="md:hidden text-blue-400 focus:outline-none"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -78,8 +88,8 @@ const Navbar = () => {
                 offset={item.offset}
                 duration={800}
                 onClick={() => setIsMenuOpen(false)}
-                activeClass="text-lime-400"
-                className="text-zinc-400 hover:text-lime-400 transition-all duration-300 cursor-pointer py-2 w-full text-center"
+                activeClass="text-blue-400"
+                className="text-zinc-400 hover:text-blue-400 transition-all duration-300 cursor-pointer py-2 w-full text-center"
               >
                 {item.name}
               </Link>
@@ -96,7 +106,7 @@ const Navbar = () => {
           style={{ zIndex: -1 }}
         ></div>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

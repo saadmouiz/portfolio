@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import back from '../asset/back1.png'
 
 const About = () => {
@@ -18,31 +19,43 @@ const About = () => {
   ];
 
   return (
-    <section id='about' className="min-h-screen w-full bg-gradient-to-b from-zinc-950 to-zinc-900 py-20">
+    <section id='about' className="min-h-screen w-full bg-gradient-to-b from-zinc-950 to-zinc-900 py-20 relative">
       {/* Background Effects */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-lime-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-lime-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-sky-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header Section */}
-        <div className="text-center mb-20">
-          <h1 className="inline-block text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-500 mb-6">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <h1 className="inline-block text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 mb-6">
             About Me
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-lime-400 to-green-500 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto mb-6"></div>
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
             Transforming ideas into digital reality with clean code and modern design
           </p>
-        </div>
+        </motion.div>
 
         {/* Profile Section */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           {/* Left Column - Image */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-lime-400 to-green-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+          <motion.div
+            className="relative group"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <img 
                 src={back} 
@@ -52,22 +65,29 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-3 text-white mb-2">
-                  <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
                   <span>Available for freelance</span>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Info */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+          >
             <div className="space-y-4">
               <h2 className="text-3xl font-bold text-white">
-                Creative <span className="text-lime-400">Developer</span>
+                Computer Engineering <span className="text-blue-400">Student</span>
               </h2>
               <p className="text-zinc-400 leading-relaxed">
-                A passionate Full Stack Developer based in Casablanca, Morocco. 
-                Specializing in building exceptional digital experiences that are both functional and visually appealing.
+                A computer engineering student based in Casablanca, Morocco, passionate about
+                designing and building modern web applications. I enjoy turning complex problems
+                into simple, elegant solutions using clean code and thoughtful interfaces.
               </p>
             </div>
 
@@ -76,7 +96,7 @@ const About = () => {
                 { label: "Experience", value: "1+ Years" },
                 { label: "Completed", value: "7+ Projects" },
                 { label: "Location", value: "Casablanca" },
-                { label: "Age", value: "20 Years" }
+                { label: "Age", value: "22 Years" }
               ].map((item, index) => (
                 <div 
                   key={index}
@@ -91,32 +111,42 @@ const About = () => {
             <div className="flex gap-4">
               <a 
                 href="#contact" 
-                className="px-6 py-3 bg-gradient-to-r from-lime-400 to-green-500 text-black font-medium rounded-xl hover:opacity-90 transition-opacity"
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-black font-medium rounded-xl hover:opacity-90 transition-opacity"
               >
                 Let's Work Together
               </a>
               <a 
                 href="#projects" 
-                className="px-6 py-3 border border-lime-400/50 text-lime-400 rounded-xl hover:bg-lime-400/10 transition-colors"
+                className="px-6 py-3 border border-blue-400/50 text-blue-400 rounded-xl hover:bg-blue-400/10 transition-colors"
               >
                 View Projects
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Experience Section */}
-        <div className="space-y-16">
-          <h2 className="text-3xl font-bold text-white text-center">What I <span className="text-lime-400">Do</span></h2>
+        <motion.div
+          className="space-y-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <h2 className="text-3xl font-bold text-white text-center">What I <span className="text-blue-400">Do</span></h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {experiences.map((exp, index) => (
-              <div 
+              <motion.div 
                 key={index}
                 className="group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-lime-400 to-green-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <div className="relative bg-zinc-800/50 backdrop-blur-sm rounded-xl p-8 border border-zinc-700/50 hover:border-lime-400/50 transition-all duration-300">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div className="relative bg-zinc-800/50 backdrop-blur-sm rounded-xl p-8 border border-zinc-700/50 hover:border-blue-400/50 transition-all duration-300">
                   <div className="text-4xl mb-4">{exp.icon}</div>
                   <h3 className="text-xl font-bold text-white mb-3">{exp.title}</h3>
                   <p className="text-zinc-400 mb-6">{exp.description}</p>
@@ -124,21 +154,27 @@ const About = () => {
                     {exp.techs.map((tech, i) => (
                       <span 
                         key={i}
-                        className="px-3 py-1 bg-lime-400/10 text-lime-400 rounded-full text-sm"
+                        className="px-3 py-1 bg-blue-500/10 text-blue-300 rounded-full text-sm"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Skills Section */}
-        <div className="mt-24">
-          <h2 className="text-3xl font-bold text-white text-center mb-16">My <span className="text-lime-400">Skills</span></h2>
+        <motion.div
+          className="mt-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <h2 className="text-3xl font-bold text-white text-center mb-16">My <span className="text-blue-400">Skills</span></h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -149,9 +185,13 @@ const About = () => {
               { name: "Problem Solving", value: 80, icon: "🧩" },
               { name: "Version Control", value: 80, icon: "📊" }
             ].map((skill, index) => (
-              <div 
+              <motion.div 
                 key={index}
-                className="bg-zinc-800/50 backdrop-blur-sm rounded-xl p-6 border border-zinc-700/50 hover:border-lime-400/50 transition-all duration-300"
+                className="bg-zinc-800/50 backdrop-blur-sm rounded-xl p-6 border border-zinc-700/50 hover:border-blue-400/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-2xl">{skill.icon}</span>
@@ -159,52 +199,20 @@ const About = () => {
                     <h3 className="text-white font-medium mb-1">{skill.name}</h3>
                     <div className="w-full h-2 bg-zinc-700 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-gradient-to-r from-lime-400 to-green-500 transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-blue-400 to-indigo-500 transition-all duration-500"
                         style={{ width: `${skill.value}%` }}
                       ></div>
                     </div>
                   </div>
-                  <span className="text-lime-400 font-medium">{skill.value}%</span>
+                  <span className="text-blue-400 font-medium">{skill.value}%</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default About;
-
-// Ajoutez ces keyframes dans votre fichier CSS global ou dans le style tag
-const styleSheet = document.createElement("style");
-styleSheet.textContent = `
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-`;
-document.head.appendChild(styleSheet);
